@@ -48,30 +48,52 @@ Server Side: When you stop the server using Ctrl + C, the system will automatica
 5.Demo screenshot is in the file named demo_screenshot.pdf
 
 File Structure
+
 1.server.c:The main server program (IPC, Socket connections, and transaction logic).
+
 2.client.c: Stress testing tool (Generates massive concurrent requests).
+
 3.bank_core.c: Defines bank account structures and initializes Mutex locks.
+
 4.security.c: Encapsulates AES encryption and XOR cipher functions.
+
 5.protocol.c: Handles network packet transmission and CRC32 verification.
+
 6.models.h: Defines shared data structures and constants.
 
 Division of Work:
+
 許安妤(HSU AN YU): 
+
 1.Use preforking to handle connections.
+
 2.Implement:
+
 (1).Row-Level Locking (mutex lock) to lock the two specific accounts that engaged in transferring money 
+
 (2).Global Locking (log lock) to lock the writing right in the transaction.log and total_tx_count (total transaction variable)
+
 (3).Prevention of deadlock: 
 to specify that the order of user A with smaller ID would be locked to the account before the one with bigger ID.
+
 3.Function to transferring money with the communication protocol of request and response struct ( | op | src | dst | amount | ) with XOR payload encryption and design the transaction logging.
+
 4.Use multi-threaded architecture to simulate 100 concurrent connections sending requests to the server simultaneously.
+
 5.Design the system architecture diagram.
 
 卓郁茨(CHO YU TZU):  
+
 1.Provide statistical data on Latency and Throughput(TPS) on the client side.
+
 2.Add the function of deposit and withdrawal in the program.
+
 3.Implement security mechanism:
+
 (1).Put the request and response in the data(payload), keeping XOR encryption designed by 許安妤(HSU AN YU) on it.
+
 (2).Complete OpenSSL(AES-128-CBC) Login Authentication.
+
 4.Modify the communication protocol to be | Length | Checksum | Payload | (Application Layer Protocol), and the checksum in the protocol is to prevent data corruption using CRC32.
+
 5.Add TCP keep-alive and timeout to prevent the connection being occupied by a specific user.
