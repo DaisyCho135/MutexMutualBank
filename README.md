@@ -45,6 +45,8 @@ The client will simulate 100 threads sending concurrent requests to the server.
 Client Side: After the test finishes, it will display the TPS (Transactions Per Second) and average latency.
 Server Side: When you stop the server using Ctrl + C, the system will automatically print a Final Financial Report. You can use this to verify if the total assets are balanced and correct.
 
+5.Demo screenshot is in the file named demo_screenshot.pdf
+
 File Structure
 1.server.c:The main server program (IPC, Socket connections, and transaction logic).
 2.client.c: Stress testing tool (Generates massive concurrent requests).
@@ -62,8 +64,6 @@ Division of Work:
 (3).Prevention of deadlock: 
 to specify that the order of user A with smaller ID would be locked to the account before the one with bigger ID.
 3.Function to transferring money with the communication protocol of request and response struct ( | op | src | dst | amount | ) with XOR payload encryption and design the transaction logging.
-
-   
 4.Use multi-threaded architecture to simulate 100 concurrent connections sending requests to the server simultaneously.
 5.Design the system architecture diagram.
 
