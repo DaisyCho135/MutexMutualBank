@@ -5,6 +5,7 @@ Introduction
 This project is a simulation of a real-world financial system developed in C for the Linux environment.
 The primary objective of this project is to address Race Conditions that occur when multiple users operate on shared data simultaneously. By simulating 100 concurrent users performing transfers, deposits, and withdrawals, this system demonstrates how to maintain data consistency and system security under high load.
 
+
 Key Features & Technologies
 
 1. System Architecture
@@ -19,6 +20,7 @@ Deadlock Prevention: In the transfer logic, I enforced a rule to "always lock th
 AES Encryption: Integrated the OpenSSL library to encrypt usernames and passwords using the AES-128-CBC algorithm during login, preventing plaintext credentials from being exposed.
 XOR Packet Obfuscation: Implemented a lightweight XOR cipher for frequent transaction commands to balance performance and privacy.
 Data Integrity: Implemented CRC32 checksums to ensure network packets are not corrupted during transmission.
+
 
 How to use
 
@@ -47,6 +49,7 @@ Server Side: When you stop the server using Ctrl + C, the system will automatica
 
 5.Demo screenshot is in the file named demo_screenshot.pdf
 
+
 File Structure
 
 1.server.c:The main server program (IPC, Socket connections, and transaction logic).
@@ -60,6 +63,7 @@ File Structure
 5.protocol.c: Handles network packet transmission and CRC32 verification.
 
 6.models.h: Defines shared data structures and constants.
+
 
 Division of Work:
 
